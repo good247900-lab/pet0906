@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제이미 다마고치 사업계획서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEADB;
+    --surface:#FBF9F0;
+    --surface-2:#F5F1E4;
+    --ink:#232920;
+    --ink-soft:#575E4B;
+    --ink-faint:#8A9078;
+    --line:#DAD3B7;
+    --line-strong:#C7BE9C;
+    --accent:#D9832E;
+    --accent-ink:#5B3410;
+    --accent-soft:#F5DFBE;
+    --accent2:#4B6B53;
+    --accent2-soft:#DCE6D9;
+    --accent2-ink:#F5F9F1;
+    --warn:#B3492E;
+    --warn-soft:#F3DFD3;
+    --shadow: 0 1px 2px rgba(35,41,32,0.06), 0 8px 24px rgba(35,41,32,0.06);
+    --radius-s: 8px;
+    --radius-m: 14px;
+    --radius-l: 22px;
+    --font-display: 'Gowun Batang', 'Noto Serif KR', serif;
+    --font-body: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#171B13; --surface:#1D2217; --surface-2:#20261A;
+      --ink:#ECE7D6; --ink-soft:#AEB59D; --ink-faint:#767C63;
+      --line:#333A28; --line-strong:#454D34;
+      --accent:#EDA24D; --accent-ink:#2A1704; --accent-soft:#4A3418;
+      --accent2:#8FB597; --accent2-soft:#28321F; --accent2-ink:#12160D;
+      --warn:#E68A6E; --warn-soft:#3A241C;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#171B13; --surface:#1D2217; --surface-2:#20261A;
+    --ink:#ECE7D6; --ink-soft:#AEB59D; --ink-faint:#767C63;
+    --line:#333A28; --line-strong:#454D34;
+    --accent:#EDA24D; --accent-ink:#2A1704; --accent-soft:#4A3418;
+    --accent2:#8FB597; --accent2-soft:#28321F; --accent2-ink:#12160D;
+    --warn:#E68A6E; --warn-soft:#3A241C;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-body); line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:var(--font-display); font-weight:700; text-wrap:balance; margin:0; color:var(--ink); }
+  p{ margin:0; }
+  a{ color:var(--accent2); }
+  table{ border-collapse:collapse; width:100%; font-size:14.5px; }
+  th,td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+  td.num, th.num{ font-variant-numeric:tabular-nums; font-family:var(--font-mono); }
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius-m); background:var(--surface); }
+  .table-wrap table{ min-width:560px; }
+
+  .wrap{ max-width:840px; margin:0 auto; padding:0 28px 100px; }
+
+  /* cover */
+  .cover{
+    padding:60px 0 44px;
+    border-bottom:1.5px dashed var(--line-strong);
+    margin-bottom:56px;
+  }
+  .cover-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--accent2); background:var(--accent2-soft);
+    padding:6px 12px 6px 8px; border-radius:999px; margin-bottom:26px;
+  }
+  .cover-tag .dot{ width:7px;height:7px;border-radius:50%; background:var(--accent2); }
+  .cover .brand{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+  .cover .brand .mark{ width:38px;height:38px;border-radius:50%; border:1.6px dashed var(--line-strong); display:grid; place-items:center; color:var(--accent); font-size:18px; }
+  .cover .brand span{ font-family:var(--font-mono); font-size:15px; }
+  .cover h1{ font-size:clamp(30px,5vw,44px); line-height:1.32; letter-spacing:-0.01em; max-width:18ch; }
+  .cover .sub{ margin-top:18px; font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.75; }
+  .cover-meta{ margin-top:32px; display:flex; gap:28px; flex-wrap:wrap; font-family:var(--font-mono); font-size:12.5px; color:var(--ink-faint); }
+  .cover-meta b{ color:var(--ink-soft); font-weight:500; }
+
+  /* confidential note */
+  .confidential{
+    margin-top:30px; padding:14px 16px; border-radius:var(--radius-s);
+    background:var(--surface-2); border:1px solid var(--line);
+    font-size:12.5px; color:var(--ink-faint); line-height:1.6;
+  }
+
+  /* stat strip */
+  .stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:36px 0 0; }
+  .stat-tile{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:18px 16px; }
+  .stat-tile .v{ font-family:var(--font-mono); font-size:22px; font-weight:500; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .stat-tile .l{ margin-top:6px; font-size:12.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* sections */
+  section{ margin-bottom:64px; }
+  .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:22px; padding-bottom:16px; border-bottom:1px dashed var(--line-strong); }
+  .sec-head .idx{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--accent2);
+    border:1.4px solid var(--accent2); border-radius:50%;
+    width:34px; height:34px; display:grid; place-items:center; flex-shrink:0;
+  }
+  .sec-head h2{ font-size:clamp(20px,2.6vw,25px); }
+  .sec-body{ display:grid; gap:18px; }
+  .lede{ font-size:16px; color:var(--ink-soft); max-width:62ch; line-height:1.75; }
+
+  .card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:20px 22px; }
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+
+  .pain-list{ display:grid; gap:10px; }
+  .pain-list .card{ padding:16px 18px; display:flex; gap:12px; align-items:flex-start; }
+  .pain-list .card .n{ font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); margin-top:2px; }
+
+  .flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .flow .card{ text-align:left; }
+  .flow .stamp{ font-family:var(--font-mono); font-size:11px; color:var(--accent2); border:1.2px solid var(--accent2); border-radius:50%; width:30px;height:30px; display:grid; place-items:center; margin-bottom:10px; }
+  .flow h3{ font-size:15px; margin-bottom:5px; }
+  .flow p{ font-size:13px; color:var(--ink-soft); line-height:1.55; }
+
+  .tag{ display:inline-block; font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em; padding:3px 9px; border-radius:999px; background:var(--accent2-soft); color:var(--accent2); }
+  .tag.warn{ background:var(--warn-soft); color:var(--warn); }
+  .tag.accent{ background:var(--accent-soft); color:var(--accent-ink); }
+
+  .assump{ font-size:12.5px; color:var(--ink-faint); border-left:2.5px solid var(--line-strong); padding-left:12px; }
+  .assump b{ color:var(--ink-soft); font-weight:600; }
+
+  .diff-band{ background:var(--ink); color:var(--paper); border-radius:var(--radius-l); padding:30px 28px; }
+  .diff-band .tag{ background:rgba(217,131,46,0.16); color:var(--accent); }
+  .diff-band p{ margin-top:10px; font-size:15px; line-height:1.7; opacity:0.92; }
+
+  .ask-card{ background:var(--surface); border:1.5px dashed var(--line-strong); border-radius:var(--radius-m); padding:24px 24px; display:grid; gap:8px; }
+  .ask-card .fill{ color:var(--accent); font-family:var(--font-mono); }
+
+  .risk-grid{ display:grid; gap:10px; }
+  .risk-row{ display:grid; grid-template-columns:1fr 1.3fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); }
+  .risk-row:last-child{ border-bottom:none; }
+  .risk-row .r{ font-size:14px; font-weight:600; }
+  .risk-row .m{ font-size:13.5px; color:var(--ink-soft); }
+
+  .sources{ font-size:12px; color:var(--ink-faint); line-height:2; }
+  .sources a{ word-break:break-all; }
+
+  footer{ padding:30px 0 10px; border-top:1px solid var(--line); font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+  @media (max-width:760px){
+    .stat-strip, .grid-4, .flow{ grid-template-columns:repeat(2,1fr); }
+    .grid-2{ grid-template-columns:1fr; }
+    .risk-row{ grid-template-columns:1fr; gap:4px; }
+    .wrap{ padding:0 18px 80px; }
+  }
+  @media print{
+    body{ background:#fff; }
+    section{ break-inside:avoid; }
+    .cover{ break-after:page; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="cover">
+    <span class="cover-tag"><span class="dot"></span>투자유치용 · 트랙 A</span>
+    <div class="brand"><span class="mark">🐾</span><span>제이미 다마고치</span></div>
+    <h1>돌봄을 습관으로 바꾸는<br>반려견 라이프케어 앱</h1>
+    <p class="sub">반려견 사진으로 만든 성장 캐릭터가, 보호자의 실제 돌봄 기록(산책·투약·병원·미용)에 따라 자란다. 처음 반려견을 키우는 1인가구·신혼부부의 "돌봄 습관 형성" 문제를 게임화 메커니즘으로 해결한다.</p>
+    <div class="cover-meta">
+      <span><b>작성일</b> 2026-09-06</span>
+      <span><b>단계</b> MVP 프로토타입 실험 전 단계</span>
+      <span><b>문서</b> 사업계획서 v1</span>
+    </div>
+    <div class="confidential">본 문서는 트랙 A(제이미 다마고치)의 사업 가설을 정리한 초기 투자 검토 자료입니다. 시장 통계는 출처를 표기했으나, 제품 관련 수치(가격·전환율·재무 추정)는 아직 실사용 데이터로 검증되지 않은 <b style="color:var(--ink-soft)">가정</b>이며 본문에 표시했습니다. 투자 판단의 근거가 되는 확정 재무제표가 아닙니다.</div>
+  </div>
+
+  <!-- 01 Executive Summary -->
+  <section>
+    <div class="sec-head"><span class="idx">01</span><h2>한눈에 보기</h2></div>
+    <div class="sec-body">
+      <p class="lede">국내 반려동물 시장은 개체 수보다 <b>1마리당 지출과 생애관리 수요</b>가 커지는 질적 성장 단계로 이동하고 있다. 제이미는 이 시장에서 가장 다루기 어려운 문제 중 하나 — "관리 앱을 깔아도 며칠 만에 손이 안 가는" 기록 이탈 문제를 캐릭터 성장이라는 감정적 장치로 해결하고, 처음 반려견을 키우는 초보 보호자층에서 반복 사용과 결제 습관을 만든다.</p>
+      <div class="stat-strip">
+        <div class="stat-tile"><div class="v">1,546만</div><div class="l">국내 반려인 수 (전체 인구 29.9%)</div></div>
+        <div class="stat-tile"><div class="v">19.4만원</div><div class="l">월평균 양육비, 전년比 +26%</div></div>
+        <div class="stat-tile"><div class="v">-1.7% / +9.2%</div><div class="l">반려견 개체수 감소 / 반려묘 증가</div></div>
+        <div class="stat-tile"><div class="v">1건</div><div class="l">배포 완료된 A/B 실험용 웹 프로토타입</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Problem -->
+  <section>
+    <div class="sec-head"><span class="idx">02</span><h2>문제 — 기록은 하고 싶은데, 사흘을 못 간다</h2></div>
+    <div class="sec-body">
+      <p class="lede">1인 가구·신혼부부가 처음 반려견을 키우면 출퇴근·외출로 생기는 돌봄 공백과 함께, 예방접종·투약·미용·산책처럼 반복되는 일정을 무엇을, 언제 챙겨야 하는지 몰라 막막함을 느낀다. 기존 관리 앱을 설치해도 기록이 의무적인 빈칸 채우기로 느껴져 대부분 며칠 안에 그만둔다.</p>
+      <div class="pain-list">
+        <div class="card"><span class="n">01</span><p>예방접종이 언제였는지, 병원 가서야 생각난다</p></div>
+        <div class="card"><span class="n">02</span><p>산책을 며칠째 못 나갔는지도 가물가물하다</p></div>
+        <div class="card"><span class="n">03</span><p>체중이 늘었는지 줄었는지 감으로만 안다</p></div>
+        <div class="card"><span class="n">04</span><p>기록 앱을 깔아도 사흘이면 열지 않게 된다 — 습관화 실패가 핵심 병목</p></div>
+      </div>
+      <p class="assump"><b>확인된 사실</b>: 반려동물의 80.1%가 하루 평균 5시간 54분 혼자 남겨진 경험이 있어(KB경영연구소, 2025) 돌봄 공백 자체는 광범위하다. <b>확인 필요</b>: 초보 1인가구·신혼부부의 정확한 규모는 국내 공식 통계로 확인되지 않았다.</p>
+    </div>
+  </section>
+
+  <!-- 03 Solution -->
+  <section>
+    <div class="sec-head"><span class="idx">03</span><h2>솔루션 — 기록하면, 캐릭터가 자란다</h2></div>
+    <div class="sec-body">
+      <p class="lede">반려견 사진을 등록하면 나만의 캐릭터 '제이미'가 생성된다. 이후 산책·식사·병원·미용 등 실제 돌봄 활동을 기록할 때마다 제이미가 자라며, 예방접종·투약·미용 시기를 미리 알려준다. 체크리스트가 아니라 애착이 가는 캐릭터를 매개로 기록을 지속시키는 것이 핵심이다.</p>
+      <div class="flow">
+        <div class="card"><div class="stamp">01</div><h3>사진 등록</h3><p>반려견 사진으로 캐릭터 생성</p></div>
+        <div class="card"><div class="stamp">02</div><h3>돌봄 기록</h3><p>산책·식사·병원·미용 기록</p></div>
+        <div class="card"><div class="stamp">03</div><h3>캐릭터 성장</h3><p>기록에 정확히 연동해 성장</p></div>
+        <div class="card"><div class="stamp">04</div><h3>일정 알림</h3><p>다음 관리 시점 사전 안내</p></div>
+      </div>
+      <p class="assump"><b>제외 범위(초기)</b>: 가족 공유, AI 기록 요약, 병원 시스템 연동, 지출 관리, 인앱결제, 정교한 AI 캐릭터 생성 — 유료 수요 검증 이후 단계적으로 검토.</p>
+    </div>
+  </section>
+
+  <!-- 04 Market -->
+  <section>
+    <div class="sec-head"><span class="idx">04</span><h2>시장 기회 — 왜 지금인가</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <tr><th>지표</th><th class="num">수치</th><th>사업적 의미</th></tr>
+          <tr><td>반려가구</td><td class="num">591만 가구 (26.7%)</td><td>대중시장 형성</td></tr>
+          <tr><td>반려인</td><td class="num">1,546만 명 (29.9%)</td><td>전 국민 3명 중 1명</td></tr>
+          <tr><td>반려견 개체수</td><td class="num">546만 마리 (전년比 -1.7%)</td><td>신규 유입 둔화 — 개체수보다 지출 단가가 핵심</td></tr>
+          <tr><td>반려묘 개체수</td><td class="num">217만 마리 (전년比 +9.2%)</td><td>중기적으로 고양이 확장 옵션 존재</td></tr>
+          <tr><td>월 양육비(치료비 제외)</td><td class="num">19.4만원 (전년比 +26%)</td><td>1마리당 지출 확대 — 구독 지불여력 근거</td></tr>
+          <tr><td>펫보험 가입률</td><td class="num">12.8%</td><td>건강관리 습관화 자체가 낮은 단계 — 습관 형성 서비스 여지</td></tr>
+          <tr><td>연관산업 시장규모</td><td class="num">2022년 약 8조원 / 2027년 15조원(정책 목표)</td><td>15조원은 확정 시장규모가 아닌 정부 육성 목표치</td></tr>
+        </table>
+      </div>
+      <p class="assump"><b>출처</b>: KB경영연구소 「2025 한국 반려동물 보고서」, 농림축산식품부 연관산업 육성대책 (하단 참고자료 09 참조, 확인일 2026-08-23 기준 내부 재정리). <b>왜 지금인가</b>: 반려견 개체수는 줄어도 1마리당 지출·건강관리 수요는 뚜렷이 늘고 있어, "많이 파는" 커머스보다 "오래 쓰게 만드는" 습관형 서비스가 유리한 국면이다.</p>
+    </div>
+  </section>
+
+  <!-- 05 Customer -->
+  <section>
+    <div class="sec-head"><span class="idx">05</span><h2>고객</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>고객</th><th>특징</th></tr>
+          <tr><td><span class="tag accent">1차</span></td><td>1인가구·신혼부부 초보 보호자 (2030)</td><td>돌봄 공백 + 일정 관리 미숙, SNS 활동 활발해 공유·확산 효과 기대</td></tr>
+          <tr><td><span class="tag">2차</span></td><td>관리가 느슨해진 기존 보호자</td><td>습관 재형성 니즈</td></tr>
+          <tr><td><span class="tag">2차</span></td><td>다견 가구</td><td>다수 캐릭터 동시 관리 니즈</td></tr>
+          <tr><td><span class="tag">파트너</span></td><td>동물병원 · 미용실 · 사료/용품 업체</td><td>중장기 제휴 수수료·B2B 채널</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Competition -->
+  <section>
+    <div class="sec-head"><span class="idx">06</span><h2>경쟁과 차별화</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <tr><th>서비스</th><th>게임화 요소</th><th>비고</th></tr>
+          <tr><td>아지냥이 (삼성카드)</td><td>캐릭터·챗봇·산책지수 보유</td><td>무료, 기능 범위 최광 — 직접 경쟁</td></tr>
+          <tr><td>일반 관리 앱 / 수기수첩 / 카톡 가족방</td><td>없음</td><td>기록 이탈률 높음 — 대체재</td></tr>
+        </table>
+      </div>
+      <div class="diff-band">
+        <span class="tag">우리가 다른 점</span>
+        <p><b>"게임 요소가 있다"는 이미 아지냥이도 갖고 있다.</b> 진짜 차별점은 실제 돌봄 행동과 캐릭터 성장이 정교하게 1:1로 연동되는 것, 그리고 돌봄 공백을 절실하게 겪는 초보 1인가구·신혼부부라는 좁고 명확한 타겟에 집중한다는 점이다. 넓은 기능이 아니라 좁고 깊은 습관 형성에 승부를 건다.</p>
+      </div>
+      <p class="assump"><b>참고 사례(해외, 확인 필요)</b>: 행동 기록과 캐릭터 성장을 연동한 자기관리 앱 Finch는 부트스트래핑으로 연 매출 3~4천만 달러, D1 리텐션 약 60% 수준으로 알려져 있다 — 국내 반려동물 카테고리로의 이전 가능성은 검증 대상이다. 제페토 등 국내 2030의 캐릭터 아이템 결제 문화도 참고 정황이나, 정확한 1차 출처는 재확인이 필요하다.</p>
+    </div>
+  </section>
+
+  <!-- 07 Business model -->
+  <section>
+    <div class="sec-head"><span class="idx">07</span><h2>비즈니스 모델</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <tr><th>모델</th><th>내용</th><th class="num">가격(가설)</th></tr>
+          <tr><td>무료</td><td>프로필, 기본 일정 알림, 간단 기록</td><td class="num">0원</td></tr>
+          <tr><td>기본 구독</td><td>상세 기록, 성장 히스토리</td><td class="num">월 4,900원</td></tr>
+          <tr><td>프리미엄 구독</td><td>다마리 관리, 캐릭터 커스터마이징</td><td class="num">월 9,900원</td></tr>
+          <tr><td>인앱 아이템</td><td>캐릭터 꾸미기·아이템 구매</td><td class="num">건별 결제</td></tr>
+          <tr><td>제휴 수수료</td><td>병원·미용·용품 연결</td><td class="num">거래액의 10~20%(업계 참고치)</td></tr>
+        </table>
+      </div>
+      <p class="assump"><b>가정 표시</b>: 위 가격은 확정값이 아니라 검증 대상이다. 참고로 국내 펫헬스케어 유사 서비스의 개인 구독 가격대는 월 4,900~29,000원 수준으로 조사됐다(KB경영연구소 기반 내부 시장조사). CAC·LTV·전환율 등 유닛이코노믹스는 유료 검증 데이터가 쌓인 이후 산정하며, 현재는 실사용 데이터가 없어 추정치를 제시하지 않는다.</p>
+    </div>
+  </section>
+
+  <!-- 08 Traction -->
+  <section>
+    <div class="sec-head"><span class="idx">08</span><h2>현재 트랙션과 검증 계획</h2></div>
+    <div class="sec-body">
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag accent">완료</span>
+          <p style="margin-top:10px; font-size:14.5px;">문제 정의·1차 시장 조사·경쟁 분석 완료<br>A/B 실험용 웹 프로토타입(참가자용 + 실험 대시보드) 배포 완료<br>서비스 소개 랜딩페이지 및 베타 대기자 등록 채널 구축</p>
+        </div>
+        <div class="card">
+          <span class="tag">다음 단계</span>
+          <p style="margin-top:10px; font-size:14.5px;">반려견 12개월 이내 1인가구·신혼부부 40~60명 모집<br>A군(캐릭터 성장) / B군(체크리스트) 4주 실험<br>4주 잔존율·주 3회 이상 기록 비율 비교</p>
+        </div>
+      </div>
+      <div class="card">
+        <b style="font-size:14px;">검증 가설</b>
+        <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft);">"실제 돌봄 기록에 캐릭터 성장을 연동하면, 단순 체크리스트보다 기록을 더 오래 지속한다." — A군의 4주 잔존율과 주 3회 이상 기록 비율이 B군보다 뚜렷이 높으면 성공으로 판정한다.</p>
+      </div>
+      <p class="assump">앱 개발 전 이 실험으로 행동 가설을 먼저 검증하고, 이후 소규모 유료 판매로 지불의사를 확인한 뒤 정식 MVP 개발에 들어가는 순서를 원칙으로 한다.</p>
+    </div>
+  </section>
+
+  <!-- 09 Roadmap -->
+  <section>
+    <div class="sec-head"><span class="idx">09</span><h2>로드맵 & 스케일업 경로</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <tr><th>단계</th><th>내용</th><th>수익모델</th></tr>
+          <tr><td>1단계</td><td>개인 보호자용 캐릭터 성장·돌봄 기록 (진행 중)</td><td>없음 (검증)</td></tr>
+          <tr><td>2단계</td><td>4주 실험 결과 기반 소규모 유료 판매</td><td>구독 검증 판매</td></tr>
+          <tr><td>3단계</td><td>정식 앱 MVP 개발 및 베타 오픈</td><td>구독 + 인앱 아이템</td></tr>
+          <tr><td>4단계</td><td>지역 병원·미용·용품 업체 제휴</td><td>거래 수수료</td></tr>
+          <tr><td>5단계</td><td>동물병원·미용실용 B2B 운영 자동화(재방문 알림 등)</td><td>B2B SaaS 구독</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 Team / Ask / Risk -->
+  <section>
+    <div class="sec-head"><span class="idx">10</span><h2>팀 · 자금 요청 · 리스크</h2></div>
+    <div class="sec-body">
+      <div class="ask-card">
+        <b style="font-size:14px;">팀</b>
+        <p style="font-size:14px; color:var(--ink-soft);">대표자 프로필 및 팀 구성 정보는 <span class="fill">[작성 필요]</span> — 실행 이력, 관련 경력, 역할 분담을 채워 넣어야 투자자 검토가 가능합니다.</p>
+      </div>
+      <div class="ask-card">
+        <b style="font-size:14px;">자금 요청 (Ask)</b>
+        <p style="font-size:14px; color:var(--ink-soft);">요청 금액과 사용 계획은 <span class="fill">[작성 필요]</span>. 참고 배분 구조(예): 실험·초기 유료검증 인건비 / MVP 개발 / 초기 마케팅(참가자 모집) / 운영 예비비 — 실제 비율은 4주 실험 결과와 소요 원가가 확인된 뒤 확정을 권장합니다.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>위험요인</th><th>대응</th></tr>
+          <tr><td>반려견 개체수 감소 추세</td><td>1마리당 지출 증가 트렌드에 집중, 중기적으로 반려묘(+9.2%) 확장 옵션 검토</td></tr>
+          <tr><td>아지냥이 등 대기업 계열 경쟁</td><td>넓은 기능 대신 행동-성장 정밀 연동 + 좁은 타겟에 집중</td></tr>
+          <tr><td>게임화 피로·재미 감소</td><td>4주 A/B 실험으로 리텐션 효과를 사전 검증 후 개발 착수</td></tr>
+          <tr><td>개인정보·반려동물 사진/건강정보 처리</td><td>수집·보관·삭제 기준 사전 설계, 법률자문 별도 확인 필요</td></tr>
+          <tr><td>AI/캐릭터 생성 관련 표현</td><td>진단·처방 표현 배제, 생활관리·기록 중심으로 한정</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="idx">11</span><h2>참고자료</h2></div>
+    <div class="sources">
+      KB경영연구소, 「2025 한국 반려동물 보고서」 — <a href="https://www.kbfg.com/kbresearch/report/reportView.do?reportId=2000531" target="_blank" rel="noopener">kbfg.com/kbresearch</a><br>
+      KB Think, 「한국 반려동물 현황」 — <a href="https://kbthink.com/investment/deepdive/research/250629-2.html" target="_blank" rel="noopener">kbthink.com</a><br>
+      KB Think, 「반려가구의 반려동물 생애 지출」 — <a href="https://kbthink.com/investment/deepdive/research/250629-5.html" target="_blank" rel="noopener">kbthink.com</a><br>
+      농림축산식품부, 「반려동물 먹이·펫헬스케어 등 연관산업 육성대책」 — <a href="https://www.mafra.go.kr/home/5109/subview.do" target="_blank" rel="noopener">mafra.go.kr</a><br>
+      한국농촌경제연구원, 「반려동물 산업 조사체계 진단 및 실태조사」 — <a href="https://repository.krei.re.kr/handle/2018.oak/31235" target="_blank" rel="noopener">repository.krei.re.kr</a><br>
+      내부자료: 「대한민국 펫시장 시장조사 보고서」(2026-08-23 기준), 「02_경쟁서비스분석.md」, 「00_제이미다마고치_원페이지기획.md」 — D:\projects\pet
+    </div>
+  </section>
+
+  <footer>
+    <span>제이미 다마고치 · 사업계획서 v1</span>
+    <span>Confidential — 트랙 A 검증 단계 자료</span>
+  </footer>
+</div>
+</body>
+</html>
